@@ -8,7 +8,6 @@
 angular.module('rolloutTask').controller('MainCtrl', ['$scope', 'dataService', function ($scope, dataService) {
     $scope.functions = [];
     $scope.selectedFunctions = [];
-    $scope.viewedFunc = {}
 
     dataService.fetchData().success(function(data) {
         $scope.functions = data;
