@@ -5,8 +5,6 @@ var redis = require("redis"),
 
 module.exports.listFunctionsData = function (callback) {
     var rclient = redis.createClient();
-
-
     rclient.get(config.data.cachename, function (err, data) {
         if (!err) {
             callback(false, JSON.parse(data));

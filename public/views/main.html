@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row autocomp" >
+    <div class="row autocomp">
         <input type="text" class="form-control input-sm chat-input" placeholder="Search Functions"
                ng-model="selectedFunction"
                typeahead="f as f.fncname for f in functions | filter:$viewValue | limitTo:8"
@@ -11,8 +11,9 @@
 
     <div class="row fsceenrow">
         <div class="col-sm-5">
-            <div >
-                <div ng-repeat="function in selectedFunctions" ng-click="activeFunc($index)" class="ibox-content {{$index == activeFunctionIndex ? 'ibox-content-active' : ''}}">
+            <div>
+                <div ng-repeat="function in selectedFunctions" ng-click="activeFunc($index, function)"
+                     class="ibox-content iboxhover {{$index == activeFunctionIndex ? 'ibox-content-active' : ''}}">
                     <div>
                         <div class="chat-activity-list">
                             <div class="chat-element">
@@ -26,11 +27,22 @@
                         </div>
                     </div>
                 </div>
-        </div></div>
+            </div>
+        </div>
         <div class="col-sm-7">
-            <pre pretty-json="viewedFunction"  />
+            <div class="ibox-content">
+                <div class="chat-activity-list">
+                    <div class="chat-element">
+                        <div class="media-body">
+                            <h4>Chosen Data Element</h4>
+                            <pre pretty-json="viewedFunc"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 <script type="text/ng-template" id="dropdownElement.html">
     <a>

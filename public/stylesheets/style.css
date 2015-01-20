@@ -40,10 +40,12 @@
 }
 
 .ibox-content {
-  cursor: pointer;
   padding: 8px !important;
 }
-.ibox-content:hover {
+.iboxhover {
+  cursor: pointer;
+}
+.iboxhover:hover {
   background-color: rgb(247, 245, 245);
 }
 .ibox-content-active {

@@ -6,7 +6,7 @@
  */
 
 
-angular.module('rolloutTask', ['ui.bootstrap', 'ui.router']);
+angular.module('rolloutTask', ['ui.bootstrap', 'ui.router', 'ngPrettyJson']);
 
 
 angular.module('rolloutTask').config(function ($stateProvider, $urlRouterProvider) {

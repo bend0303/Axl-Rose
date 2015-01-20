@@ -22,8 +22,8 @@ angular.module('rolloutTask').controller('MainCtrl', ['$scope', 'dataService', f
         $scope.functions.splice(index, 1);
         $scope.selectedFunction = '';
     }
-    $scope.activeFunc = function($index) {
+    $scope.activeFunc = function($index, func) {
         $scope.activeFunctionIndex = $index;
-        $scope.viewedFunc = $scope.functions[$index];
+        $scope.viewedFunc = func;
     }
 }]);
