@@ -1,7 +1,13 @@
-"use strict";
+'use strict';
+
+/**
+ * Data util library
+ *  @author Bend
+ */
+
 var _ = require('lodash');
 
-module.exports.buildDataObject = function (data, callback) {
+module.exports.buildDataObject = function (data) {
     var retval = [];
     var classes = _.flatten(data);
 
@@ -24,6 +30,7 @@ module.exports.buildDataObject = function (data, callback) {
             retval.push(retelem);
         }
     }
-    callback(false, retval);
+
+    return retval;
 
 };

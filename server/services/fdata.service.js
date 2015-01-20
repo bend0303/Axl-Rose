@@ -1,17 +1,15 @@
 "use strict";
-var fdataHandler = require('../handlers/fdata.handler'),
+var redis = require("redis"),
     config = require('config'),
     request = require('request');
 
 module.exports.listFunctionsData = function (callback) {
-    request({
-        url: config.data.url1,
-        json: true
-    }, function (error, response, body) {
-        if (!error && response.statusCode === 200) {
-            if (body.length && body.length > 0) {
-                fdataHandler.buildDataObject(body, callback);
-            } else return callback("Data source is wrong or empty");
-        } else callback(error)
-    })
+    var rclient = redis.createClient();
+
+
+    rclient.get(config.data.cachename, function (err, data) {
+        if (!err) {
+            callback(false, JSON.parse(data));
+        } else callback('Data is not loaded');
+    });
 };

@@ -1,4 +1,9 @@
-"use strict";
+'use strict';
+
+/**
+ * Main Server Definition
+ *  @author Bend
+ */
 
 var express = require('express');
 var config = require('config');
@@ -14,8 +19,13 @@ require('./config/express')(server);
 // Load routes
 require('./server/routes')(server);
 
+//Load data to cache
+require('./config/dataconfig')(function(err) {
+    if (!err) {
+        server.listen(port);
+        console.log('Rollout.io task server started on port ' + port);
+    } else console.log(err);
+});
 
 
-server.listen(port);
-console.log('Rollout.io task server started on port ' + port);
 
