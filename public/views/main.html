@@ -2,7 +2,7 @@
     <div class="row autocomp">
         <input type="text" class="form-control input-sm chat-input" placeholder="Search Functions"
                ng-model="selectedFunction"
-               typeahead="f as f.fncname for f in functions | filter:$viewValue | limitTo:8"
+               typeahead="f as f.fncname for f in functions | filter:{fncname: $viewValue} | limitTo:10"
                typeahead-min-length='1'
                typeahead-on-select='onSelectFunction($item, $model, $label)'
                typeahead-template-url="dropdownElement.html">
