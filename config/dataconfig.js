@@ -11,7 +11,7 @@ module.exports = function (callback) {
     var retval = [];
 
     request({
-        url: config.data.url1,
+        url: config.data.url,
         json: true
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
