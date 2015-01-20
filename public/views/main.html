@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row autocomp" >
+        <input type="text" class="form-control input-sm chat-input" placeholder="Search Functions"
+               ng-model="selectedFunction"
+               typeahead="f as f.fncname for f in functions | filter:$viewValue | limitTo:8"
+               typeahead-min-length='1'
+               typeahead-on-select='onSelectFunction($item, $model, $label)'
+               typeahead-template-url="dropdownElement.html">
+
+    </div>
+
+    <div class="row fsceenrow">
+        <div class="col-sm-5">
+            <div >
+                <div ng-repeat="function in selectedFunctions" ng-click="activeFunc($index)" class="ibox-content {{$index == activeFunctionIndex ? 'ibox-content-active' : ''}}">
+                    <div>
+                        <div class="chat-activity-list">
+                            <div class="chat-element">
+                                <div class="media-body">
+                                    <h4>{{function.classname}}: {{function.fncname}}</h4>
+                                    <small class="m-b-xs fileName">
+                                        {{function.file}}:{{function.line}}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div></div>
+        <div class="col-sm-7">
+            <pre pretty-json="viewedFunction"  />
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="dropdownElement.html">
+    <a>
+        -[{{match.model.classname}} <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>]
+        <small class="fileName" style="display: block;">({{match.model.file}}:{{match.model.line}})</small>
+    </a>
+</script>
